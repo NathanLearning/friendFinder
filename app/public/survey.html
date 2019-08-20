@@ -215,25 +215,25 @@
           ".chosen-select-width": {
               width: "95%"
           }
-      };
+      }
       for (var selector in config) {
-          $(selector).chosen(config[selector]);
+          $(selector).chosen(config[selector])
       }
       $("#submit").on("click", function (event) {
-          event.preventDefault();
+          event.preventDefault()
           function validateForm() {
-              var isValid = true;
+              var isValid = true
               $(".form-control").each(function () {
                   if ($(this).val() === "") {
-                      isValid = false;
+                      isValid = false
                   }
-              });
+              })
               $(".chosen-select").each(function () {
                   if ($(this).val() === "") {
-                      isValid = false;
+                      isValid = false
                   }
-              });
-              return isValid;
+              })
+              return isValid
           }
           if (validateForm()) {
               var userData = {
@@ -251,19 +251,16 @@
                       $("#q9").val(),
                       $("#q10").val()
                   ]
-              };
-              // AJAX post the data to the friends API.
+              }
               $.post("/api/friends", userData, function (data) {
-                  // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                  $("#match-name").text(data.name);
-                  $("#match-img").attr("src", data.photo);
-                  // Show the modal with the best match
-                  $("#results-modal").modal("toggle");
-              });
+                  $("#match-name").text(data.name)
+                  $("#match-img").attr("src", data.photo)
+                  $("#results-modal").modal("toggle")
+              })
           } else {
-              alert("Please fill out all fields before submitting!");
+              alert("Please fill out all fields before submitting!")
           }
-      });
+      })
   </script>
 
 
